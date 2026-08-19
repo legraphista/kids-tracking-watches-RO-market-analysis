@@ -66,6 +66,8 @@ weight_g:               57 (D-023) / 55 (D-011)
 camera:                 true
 games:                  true
 extras_disableable:     partial — **unverified**
+price_display_eur: "≈ €80"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "399.98 lei"
 price_eur:              ~80 (399.98 RON D-023 / 379.94 RON D-011; approximate conversion)
 buy_from:               eMAG.ro marketplace, seller "Sweinsteiger Db Group FBE" (Romania)
 price_ro_eur:           n/a — this IS the Romanian price

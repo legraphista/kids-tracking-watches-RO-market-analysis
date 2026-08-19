@@ -1,0 +1,8 @@
+---
+import ProsePage from '../../components/ProsePage.astro';
+import BatteryTable from '../../components/BatteryTable.astro';
+import { t } from '../../lib/i18n.mjs';
+---
+<ProsePage lang="en" slug="battery" title={t('batteryTitle', 'en')} path="/battery/">
+  <BatteryTable lang="en" />
+</ProsePage>

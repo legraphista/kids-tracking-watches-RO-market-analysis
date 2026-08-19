@@ -57,6 +57,8 @@ camera:                 true
 games:                  true           # full Android 8.1 + Google Play; TikTok/YouTube/Facebook advertised
 extras_disableable:     false          # no camera-lock, no game-lock, no Play-Store lock claimed by the vendor.
                                        # One owner reports Google Family Link can be side-loaded as a workaround.
+price_display_eur: "≈ €58"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "295 lei"
 price_eur:              ~58            # 295 RON, converted at ~5.07 RON/EUR (approximate, uncited rate)
 buy_from:               eMAG.ro marketplace, seller "Wirsen" (Romania)
 price_ro_eur:           295 RON (~€58), reduced from a claimed 397 RON PRP

@@ -8,7 +8,7 @@ import { renderMd } from '../lib/render.mjs';
 import { loadRanking } from '../lib/watches.mjs';
 const { lang } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const decision = fs.readFileSync(path.resolve(process.cwd(), `src/content/site/decision-path.${lang}.md`), 'utf-8');
+const decision = fs.readFileSync(path.resolve(process.cwd(), `src/data/site/decision-path.${lang}.md`), 'utf-8');
 const xplora = loadRanking().gate.find((g) => g.name.startsWith('Xplora'));
 ---
 <Base lang={lang} path="/">

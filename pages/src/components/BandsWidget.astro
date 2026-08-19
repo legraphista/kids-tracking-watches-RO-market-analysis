@@ -1,0 +1,51 @@
+---
+import { t } from '../lib/i18n.mjs';
+import { RO_BANDS, G2_ROW, parseBands, parse2g } from '../lib/robands.mjs';
+const { watch, lang } = Astro.props;
+const d = watch.data;
+const bands = parseBands(d.lte_bands);
+const g2 = parse2g(d.voice_fallback);
+const volte = String(d.volte ?? '').split(' # ')[0].trim();
+function mark(v) {
+  if (v === true || v === 'yes') return { s: `✓ ${t('yes', lang)}`, cls: 'ok' };
+  if (v === false || v === 'no') return { s: `✗ ${t('no', lang)}`, cls: 'bad' };
+  return { s: `? ${t('unknown', lang)}`, cls: 'warn' };
+}
+const rows = RO_BANDS.map((b) => ({
+  ...b,
+  roleText: b.role[lang],
+  opsText: typeof b.ops === 'object' ? b.ops[lang] : b.ops,
+  m: b.trap ? null : mark(bands ? bands.has(b.id) : null),
+  trapM: b.trap ? (bands ? bands.has(b.id) : null) : null,
+}));
+---
+<section class="widget">
+  <h3>{t('wBandsTitle', lang)}</h3>
+  <div class="tablewrap">
+    <table class="bands">
+      <thead>
+        <tr><th>{t('wBand', lang)}</th><th>{t('wRole', lang)}</th><th>{t('wOps', lang)}</th><th>{t('wThisWatch', lang)}</th></tr>
+      </thead>
+      <tbody>
+        {rows.map((b) => (
+          <tr class={b.key ? 'keyband' : b.trap ? 'trapband' : ''}>
+            <td><strong>{b.id}</strong> <span class="hint">{b.freq}</span></td>
+            <td>{b.roleText}</td>
+            <td>{b.opsText}</td>
+            <td>{b.trap
+              ? <span class="chip">{b.trapM === true ? t('wTrapListed', lang) : b.trapM === false ? '—' : `? ${t('unknown', lang)}`}</span>
+              : <span class={`chip ${b.m.cls}`}>{b.m.s}</span>}</td>
+          </tr>
+        ))}
+        <tr>
+          <td><strong>{G2_ROW.id}</strong> <span class="hint">{G2_ROW.freq}</span></td>
+          <td>{G2_ROW.role[lang]}</td>
+          <td>{G2_ROW.ops}</td>
+          <td><span class={`chip ${g2 === 'yes' ? 'ok' : g2 === 'no' ? 'bad' : 'warn'}`}>{g2 === 'yes' ? `✓ ${t('yes', lang)}` : g2 === 'no' ? `✗ ${t('no', lang)}` : `? ${t('unknown', lang)}`}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  {bands === null && <p class="hint">{t('wBandsUnknown', lang)}</p>}
+  <p class="hint">{t('wB20Nuance', lang)} {t('wVolteLabel', lang)}: <strong>{volte || t('unknown', lang)}</strong> — {t('wVolteNote', lang)}</p>
+</section>

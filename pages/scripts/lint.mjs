@@ -9,7 +9,7 @@ import yaml from 'js-yaml';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const WATCH_DIR = path.join(ROOT, 'research', 'watches');
-const SUMMARY_DIR = path.join(ROOT, 'pages', 'src', 'content', 'summaries');
+const SUMMARY_DIR = path.join(ROOT, 'pages', 'src', 'data', 'summaries');
 
 const SECTIONS = {
   en: ['## Verdict', '## Does it work in Romania?', '## Connectivity', '## Positioning', '## Battery', '## Buying', '## Watch out for', '## Sources'],

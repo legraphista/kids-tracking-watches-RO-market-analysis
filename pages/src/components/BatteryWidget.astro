@@ -1,0 +1,61 @@
+---
+import { t } from '../lib/i18n.mjs';
+import { parseHours } from '../lib/robands.mjs';
+const { watch, lang } = Astro.props;
+const d = watch.data;
+function raw(v) { return String(v ?? '—').split(' # ')[0].trim(); }
+const claimed = parseHours(d.battery_claimed_h);
+const observed = parseHours(d.battery_observed_h);
+const series = [
+  { label: t('colClaimed', lang), range: claimed, text: raw(d.battery_claimed_h), cls: 'claim' },
+  { label: t('colObserved', lang), range: observed, text: raw(d.battery_observed_h), cls: 'obs' },
+];
+const maxVal = Math.max(24, ...series.filter((s) => s.range).map((s) => s.range.max));
+const SCALE = maxVal > 48 ? Math.max(72, maxVal) : 48;
+const pct = (h) => Math.min(100, (h / SCALE) * 100);
+const school = 9.5;
+const ticks = SCALE === 48 ? [12, 24, 36, 48] : [24, 48, 72];
+const verdictKey = !observed ? 'wBatVerdictUnknown'
+  : observed.min >= 24 ? 'wBatVerdictGood'
+  : observed.min >= school ? 'wBatVerdictSchool'
+  : 'wBatVerdictRisk';
+---
+<section class="widget">
+  <h3>{t('wBatteryTitle', lang)}</h3>
+  <p><strong>{t(verdictKey, lang)}</strong></p>
+  <div class="bw" role="img" aria-label={`${t('colClaimed', lang)}: ${series[0].text}; ${t('colObserved', lang)}: ${series[1].text}`}>
+    <div class="bw-row bw-head">
+      <span class="bw-label"></span>
+      <div class="bw-track bare">
+        <span class="bw-schoolflag" style={`left:${pct(school)}%`}>{t('wSchoolDay', lang)} ▼</span>
+      </div>
+      <span class="bw-val"></span>
+    </div>
+    {series.map((s) => (
+      <div class="bw-row">
+        <span class="bw-label">{s.label}</span>
+        <div class="bw-track">
+          {ticks.map((h) => <span class="bw-grid" style={`left:${pct(h)}%`}></span>)}
+          {s.range ? (
+            <>
+              <span class={`bw-bar ${s.cls}`} title={s.text} style={`left:0; width:${Math.max(pct(s.range.min), 1)}%`}></span>
+              {s.range.max > s.range.min &&
+                <span class={`bw-bar bw-range ${s.cls}`} title={s.text} style={`left:${pct(s.range.min)}%; width:${pct(s.range.max) - pct(s.range.min)}%`}></span>}
+            </>
+          ) : <span class="bw-none">{t('unknown', lang)}</span>}
+          <span class="bw-school" style={`left:${pct(school)}%`} title={t('wSchoolDay', lang)}></span>
+        </div>
+        <span class="bw-val">{s.text}</span>
+      </div>
+    ))}
+    <div class="bw-row bw-axis">
+      <span class="bw-label"></span>
+      <div class="bw-track bare">
+        <span class="bw-tick" style="left:0">0 h</span>
+        {ticks.map((h) => <span class="bw-tick" style={`left:${pct(h)}%`}>{h} h</span>)}
+      </div>
+      <span class="bw-val"></span>
+    </div>
+  </div>
+  <p class="hint">{t('wBatterySolid', lang)} {t('wBatteryNote', lang)}</p>
+</section>

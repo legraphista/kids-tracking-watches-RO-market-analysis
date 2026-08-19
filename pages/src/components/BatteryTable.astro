@@ -22,7 +22,7 @@ function fmt(v) {
     <tbody>
       {watches.map((w) => (
         <tr>
-          <td><a href={`${base}${lang === 'ro' ? '/ro' : ''}/watches/${w.slug}/`}>{String(w.data.model).split('(')[0].trim()}</a></td>
+          <td><a href={`${base}${lang === 'en' ? '/en' : ''}/watches/${w.slug}/`}>{String(w.data.model).split('(')[0].trim()}</a></td>
           <td>{fmt(w.data.battery_mah)}</td>
           <td>{fmt(w.data.battery_claimed_h)}</td>
           <td>{fmt(w.data.battery_observed_h)}</td>

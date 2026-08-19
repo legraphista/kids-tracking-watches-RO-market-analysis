@@ -55,6 +55,7 @@ weight_g: UNKNOWN
 camera: true
 games: true
 extras_disableable: partial
+price_display_eur: "€119"      # normalized for the site tile; picked from the price fields below
 price_eur: 119
 buy_from: "TradeInn / Kidinn (ES) — ships to Romania. Elari's own store: sold out."
 price_ro_eur: n/a

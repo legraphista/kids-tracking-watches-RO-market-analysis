@@ -61,6 +61,8 @@ weight_g: 40.4                   # with band; 26.5 g without. Source: garminrumo
 camera: false
 games: true
 extras_disableable: partial
+price_display_eur: "€299"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "1,835.87 lei"
 price_eur: 299                   # USD 299.99 / GBP 259.99 / ~EUR 299 RRP
 buy_from: eMAG Romania (1P, "Vandut si livrat de eMAG"), 24-month warranty; also Altex.ro and Vexio.ro
 price_ro_eur: 360                # 1,835.87 RON new at eMAG, 2026-08-19. Launch price 1,509 RON

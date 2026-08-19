@@ -8,7 +8,7 @@ import yaml from 'js-yaml';
 // astro dev/build always run from pages/
 const ROOT = path.resolve(process.cwd(), '..');
 const WATCH_DIR = path.join(ROOT, 'research', 'watches');
-const SUMMARY_DIR = path.join(ROOT, 'pages', 'src', 'content', 'summaries');
+const SUMMARY_DIR = path.join(ROOT, 'pages', 'src', 'data', 'summaries');
 
 // slug -> exact name used in RANKING.md tables (matrix or gate)
 export const MATRIX_NAMES = {
@@ -64,12 +64,12 @@ function parseDoc(file) {
   return { slug, data, body, raw };
 }
 
-let _watches = null;
+// deliberately uncached: the docs live outside Vite's watch scope, so a module-level
+// cache serves stale data in `astro dev` after a doc edit. Re-reading is ~ms.
 export function loadWatches() {
-  if (_watches) return _watches;
   const files = fs.readdirSync(WATCH_DIR).filter((f) => f.endsWith('.md'));
   const ranking = loadRanking();
-  _watches = files.map((f) => {
+  const _watches = files.map((f) => {
     const w = parseDoc(path.join(WATCH_DIR, f));
     const mName = MATRIX_NAMES[w.slug];
     const gName = GATE_NAMES[w.slug];
@@ -104,9 +104,7 @@ function cellName(cell) {
   return cell.replace(/[*~`]/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').trim();
 }
 
-let _ranking = null;
 export function loadRanking() {
-  if (_ranking) return _ranking;
   const raw = fs.readFileSync(path.join(ROOT, 'research', 'RANKING.md'), 'utf-8');
   const matrix = [];
   const gate = [];
@@ -129,8 +127,7 @@ export function loadRanking() {
     gate.push({ name: cellName(cells[1]), reason: cellName(cells[2]) });
   }
   if (matrix.length < 10) throw new Error(`RANKING.md matrix parse suspiciously small: ${matrix.length} rows`);
-  _ranking = { matrix, gate };
-  return _ranking;
+  return { matrix, gate };
 }
 
 export function loadSummaries(lang) {

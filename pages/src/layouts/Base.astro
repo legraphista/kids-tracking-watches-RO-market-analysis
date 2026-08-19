@@ -16,21 +16,34 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ? `${title} — ` : ''}{t('siteTitle', lang)}</title>
     <meta name="description" content={t('tagline', lang)} />
+    <script is:inline>
+      // set before first paint to avoid a flash; manual choice persists, else system
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var dark = stored ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌚</text></svg>" />
   </head>
   <body>
     <header class="site">
       <div class="wrap">
-        <a class="brand" href={href(base, lang, '/')}>{lang === 'ro' ? 'Ceasuri GPS copii · RO' : 'Kids GPS watches · RO'}</a>
+        <a class="brand" href={href(base, lang, '/')}>{lang === 'ro' ? 'Ceasuri GPS · cercetare RO' : 'GPS watches · RO research'}</a>
         <nav>
           {nav.map((n) => (
-            <a href={href(base, lang, n.p)} aria-current={n.p === path ? 'page' : undefined}>{n.label}</a>
+            <a href={href(base, lang, n.p)} aria-current={n.p === path || (n.p === '/' && path.startsWith('/watches/')) ? 'page' : undefined}>{n.label}</a>
           ))}
         </nav>
         <span class="langswitch">
-          <a class={lang === 'en' ? 'on' : ''} href={href(base, 'en', path)}>EN</a>
-          {' · '}
-          <a class={lang === 'ro' ? 'on' : ''} href={href(base, 'ro', path)}>RO</a>
+          <a class={lang === 'en' ? 'on' : ''} href={href(base, 'en', path)} aria-label={t('langName', 'en')} title={t('langName', 'en')}>
+            <svg viewBox="0 0 60 30" class="flag"><clipPath id="ukclip"><path d="M0,0 v30 h60 v-30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukclip)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg> EN
+          </a>
+          <a class={lang === 'ro' ? 'on' : ''} href={href(base, 'ro', path)} aria-label={t('langName', 'ro')} title={t('langName', 'ro')}>
+            <svg viewBox="0 0 60 30" class="flag"><rect width="20" height="30" fill="#002B7F"/><rect x="20" width="20" height="30" fill="#FCD116"/><rect x="40" width="20" height="30" fill="#CE1126"/></svg> RO
+          </a>
         </span>
+        <button class="themetoggle" id="themetoggle" aria-label={t('themeToggle', lang)} title={t('themeToggle', lang)}>◐</button>
       </div>
     </header>
     <main class="wrap">
@@ -42,5 +55,12 @@ const nav = [
         {t('tagline', lang)}
       </div>
     </footer>
+    <script is:inline>
+      document.getElementById('themetoggle').addEventListener('click', function () {
+        var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+    </script>
   </body>
 </html>

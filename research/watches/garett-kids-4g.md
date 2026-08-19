@@ -44,6 +44,8 @@ weight_g:               54                              # "max. 54 g"
 camera:                 true                            # 2 x
 games:                  true                            # 10
 extras_disableable:     partial
+price_display_eur: "€64.83"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "423.75 lei"
 price_eur:              64.83                           # CORRECTED 2026-08-19 (was 78.49). 279.99 PLN street at Media Expert / RTV Euro AGD; 248.99 PLN lowest on Ceneo/Allegro (EUR 57.65). The old figure was garett.com.pl RRP 339 PLN, which nobody pays. Makes the RO premium +25%, not +3%
 buy_from:               garett.com.pl (Poland), or the GARETT vendor account on eMAG.ro (Romania)
 price_ro_eur:           80.81                           # 423.75 RON, eMAG.ro, 2026-08-19

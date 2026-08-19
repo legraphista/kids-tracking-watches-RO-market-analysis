@@ -70,6 +70,8 @@ camera:                 true (front camera on nearly all 4G SKUs; some dual-came
 games:                  true (typically 7 built-in; newer SKUs add Google Play)
 extras_disableable:     partial — "school mode" blocks games/apps on a schedule; the covert
                         remote-listen feature has NO documented off switch
+price_display_eur: "≈ €50–90"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "250–450 lei"
 price_eur:              ~50–90 EUR (250–450 RON)
 buy_from:               eMAG.ro marketplace (RO) · kidgps.ro (RO) · xkids.ro (RO)
 price_ro_eur:           n/a — this tier is Romanian-native; Romania is the cheap market, not the dear one

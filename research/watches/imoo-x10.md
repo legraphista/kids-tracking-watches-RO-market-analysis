@@ -62,6 +62,8 @@ weight_g: 67                   # imoo publishes no weight. 67 g measured by netz
 camera: true                   # 8 MP rear + 5 MP front, flip design. Not physically removable.
 games: true                    # on-watch app store; parent app offers "Apps Restrictions"
 extras_disableable: partial
+price_display_eur: "€299"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "3,630.00 lei"
 price_eur: 299
 buy_from: imoo EU store (imoostore.com/eu) - ships to Romania, free standard shipping, 3-7 business days
 price_ro_eur: ~700             # 3,630.00 RON (was 3,579.99; discount lapsed 2026-08-19) on eMAG (seller DeiTim), i.e. ~2.3x imoo's own EU price.
@@ -998,3 +1000,11 @@ owner reviews worldwide — the eMAG RO review, the DE/SG press tests and the ap
 remain the load-bearing sources for this model. The one genuinely new fact is the
 **China↔overseas account partition** (Melissacolorful), which slots under vendor-commitment/
 region risk rather than any spec row.
+
+## Platform registration corroboration (2026-08-19)
+
+The imoo account flow was completed first-hand with a +40 number on 2026-08-19 (account
+created; no SMS challenge presented, corrected same day — detail in the Z7 file, "RO
+registration test"). The X10 was
+already `likely` on its own dated RO owner report; this removes the residual account-flow
+risk it shared with the other imoos. No score change.

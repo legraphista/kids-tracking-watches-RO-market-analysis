@@ -41,6 +41,7 @@ weight_g:               44            # incl. strap
 camera:                 false         # deliberate omission
 games:                  false         # deliberate omission
 extras_disableable:     partial       # GPS/positioning fully switchable off; dial pad off by default and parent-enabled; strangers blocked. There is almost nothing else to disable by design.
+price_display_eur: "€199"      # normalized for the site tile; picked from the price fields below
 price_eur:              199.00        # anio.eu, 2026-08-19
 buy_from:               anio.eu (DE/AT only) · congstar.de bundle (DE) · smartwatch.de (DE) · Hartlauer.at (AT) · Amazon.de (both variants out of stock 2026-08-19)
 price_ro_eur:           n/a           # no Romanian retail, distributor or warranty entity found

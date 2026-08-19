@@ -1,0 +1,7 @@
+**Nu există nicio opțiune cu adevărat bună pe piața asta. Cine vă spune altceva vrea să vă vândă ceva.**
+
+1. **Întâi cartela SIM:** orice preplătită ieftină cu voce și ~1 GB de date, de preferat **Digi sau Orange** — dacă VoLTE nu merge, apelurile trec pe 2G în loc ca ceasul să rămână mut. Doar Garmin cere mai mult: propriul abonament obligatoriu, ~10 €/lună.
+2. **Cumpărați [imoo Watch Phone Z7](watches/imoo-z7.md)** — 186 € de pe imoostore.com (livrează în România) sau ~1.115 lei pe eMAG (vânzătorul OVOLT, retur 14 zile). Blocajul lui istoric — înregistrarea imoo cu număr +40 — a fost testat la prima mână pe 2026-08-19 și **a trecut**: cont creat, direct la asocierea ceasului, fără să fie cerut vreun cod SMS. Refaceți totuși testul gratuit cu numărul dumneavoastră înainte să plătiți.
+3. **Vreți calea cea mai simplă și sigură? [TCL MOVETIME MT48](watches/tcl-movetime-mt48.md)** — 898 lei, vândut chiar de eMAG, retur 30 de zile, garanție 24 de luni. Aproape nicio recenzie nicăieri, deci cumpărați cele mai puține probleme *cunoscute* — nu e totuna cu cele mai puține probleme. Păstrați factura.
+4. **Cu buget mic: [imoo Z3](watches/imoo-z3.md)** — 664 lei pe Amazon.de. Aceeași baterie ca Z7, dar fără istoric al locației și fără Galileo/BeiDou.
+5. **Orice ați cumpăra, testați în perioada de retur:** un apel primit cât timp ceasul e pe LTE și poziția raportată din interiorul unei clădiri.

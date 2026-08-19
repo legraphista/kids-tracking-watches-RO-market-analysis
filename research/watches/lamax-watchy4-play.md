@@ -44,6 +44,8 @@ weight_g: 52
 camera: true                # 0.3 Mpx
 games: true                 # Sokoban
 extras_disableable: partial
+price_display_eur: "≈ €90"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "≈ €255 (RO)"
 price_eur: ~90              # 2,249.10 CZK on the vendor's own store. EUR is my arithmetic at ~24.5 CZK/EUR
 buy_from: lamax-electronics.com (CZ) — vendor store. eMAG.ro marketplace seller BRANDSLANDIA GROUP (RO)
 price_ro_eur: ~255          # 1,294.32 RON on eMAG.ro. EUR is my arithmetic at ~5.08 RON/EUR

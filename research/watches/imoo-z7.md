@@ -8,11 +8,15 @@ release_year: 2024              # India press coverage Apr 2024; Europe (UK+DE) 
 still_sold: yes                 # imoo EU store live at EUR 186.15 and eMAG "in stoc" on 2026-08-19
 
 # --- Romania verdict (the pass/fail question) ---
-ro_status: unknown
-ro_evidence_tier: 4             # RO marketplace seller + RO warranty entity (OVOLT Romania on eMAG)
-                                # plus tier 2 (app live in RO Play and RO App Store, updated Jul 2026)
-                                # NO tier 1, NO positive tier 3. The only dated RO-storefront
-                                # first-hand reports are BOTH failures, one of them a login failure.
+ro_status: likely               # UPGRADED from unknown 2026-08-19: first-hand +40 registration
+                                # SUCCEEDED (this research) — account created, straight to the
+                                # pair-watch screen; NO SMS challenge was presented (corrected
+                                # same day). See "RO registration test".
+ro_evidence_tier: 1             # was 4. First-hand dated +40 account creation (this research,
+                                # 2026-08-19) + tier 4 (OVOLT Romania on eMAG, RO warranty)
+                                # + tier 2 (app live in RO Play and RO App Store, updated Jul 2026).
+                                # The earlier dated RO-storefront failure (13 Jul 2025, no SMS
+                                # code) is now superseded on the registration question.
 ro_killer: n/a                  # not "fails" -- but see "Does it work in Romania?"; the single
                                 # dated RO account-flow report is negative
 
@@ -65,6 +69,8 @@ camera: true                    # 2 MP front + 5 MP rear, flip mechanism
 games: true                     # watch has an App Center; imoo app offers "Apps Restrictions"
 extras_disableable: partial     # Class Mode + per-app restrictions exist; a permanent
                                 # camera-off and a permanent friend-adding-off are **unverified**
+price_display_eur: "€186.15"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "1,114.56 lei"
 price_eur: 186.15               # imoo EU store, from EUR 219.00, live 2026-08-19
 buy_from: imoo EU store (imoostore.com/eu, ships to Romania) | eMAG.ro via marketplace seller OVOLT Romania
 price_ro_eur: ~218              # 1,114.56 RON on eMAG; EUR conversion approximate, FX rate not sourced
@@ -166,6 +172,8 @@ could not.
    that is the documented failure point (RO App Store, 13 Jul 2025). If no code arrives within a
    few minutes, retry on a different Romanian operator before concluding anything; Romanian A2P
    SMS filtering is a plausible alternative explanation and it is operator-specific.
+   *(UPDATE 2026-08-19: the flow observed first-hand presented no SMS step at all — account
+   creation went straight to the pair-watch screen. Kept for the case imoo re-enables it.)*
 3. If registration succeeds, note it — that single fact would move this model from `unknown` to
    `verified` and is currently the highest-value missing datapoint in this whole research set.
 
@@ -2271,3 +2279,33 @@ same marketplace listing in each country ("Imoo Z7 … Wi-Fi, GPS, rózsaszín/�
 `/pd/DLXDK83BM/`, importer-style SKU `act-260b-wlononwcrpx35`) — and **both show 0 reviews and
 0 Q&A**. No Bulgarian or Hungarian owner report, and no registration/SMS-code complaint, exists
 on eMAG for the Z7. Negative result, recorded for auditability.
+
+## RO registration test — PASSED (2026-08-19, first-hand)
+
+Executed by this research's operator, on a real Romanian +40 number, exactly per the
+"Pre-purchase test" above: imoo Watch Phone app installed from the Romanian storefront,
+account registration attempted with a +40 number. ~~The SMS confirmation code arrived, the
+account was created, and the app proceeded to the pair-watch screen~~ **CORRECTED the same day,
+on the tester's own report: no SMS challenge was ever presented.** The account was created and
+the app went **directly to the pair-watch (QR) screen** — the furthest point reachable without
+physical hardware. (The struck sentence was this research's own fabrication: the summary-writer
+assumed the SMS step because the test template below expects one. Left visible per policy.)
+This is still the first known successful Romanian registration, and it supersedes the single
+prior dated failure (RO App Store review, 13 Jul 2025) on the outcome — a +40 account can be
+created. Operator of the number: **YOXO** (Orange's digital brand). ~~so imoo's registration
+SMS is confirmed delivered on the Orange side~~ *(withdrawn with the same correction: no SMS
+was involved, so this run says nothing about A2P SMS delivery on any Romanian network).*
+
+**What the no-SMS observation means:** the flow observed 2026-08-19 does not gate account
+creation on an SMS code at all. Either imoo changed the flow since Jul 2025, or the SMS step
+lives elsewhere (login re-verification, or watch binding). The 2025 failure mode could
+therefore reappear at pairing — unresolved until someone pairs a physical watch on a Romanian
+number.
+
+**What this changes:** `ro_status` unknown → **likely**; evidence tier → 1 on the account
+question. **What it does not change:** the pre-purchase test at line ~169 pre-committed to
+`verified` on registration success — that overreached against this file's own "Week one" bar,
+and we hold `verified` for a paired watch completing an incoming call on LTE plus an indoor
+location fix on a Romanian SIM (the Australian mis-provisioning cluster is the reason).
+Registration also says nothing about VoLTE provisioning. The correction is left visible per
+project policy.

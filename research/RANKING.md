@@ -57,9 +57,9 @@ Both axes 0–10. **Capability** = how good if it works. **Evidence** = how much
 | Watch | Capability | Evidence | Where it sits |
 |---|---|---|---|
 | **TCL MOVETIME MT48** | **4** | **7** | **Was 5/7. Best available — but its lead is evidence and retail channel, not capability** |
-| **imoo Watch Phone Z7** | **4** | **6** | **Evidence 5→6: two drain tests, 30 Trustpilot, 10 Play, dated Irish owners, a school-day figure — and 47 model-tagged Amazon reviews (2026-08-19), incl. the Australian mis-provisioning cluster** |
+| **imoo Watch Phone Z7** | **4** | **7** | **Evidence 6→7 (2026-08-19): the +40 registration test PASSED first-hand — account created, straight to pair-watch (no SMS challenge; corrected same day); ro_status unknown→likely. Previously: two drain tests, 30 Trustpilot, 10 Play, dated Irish owners, a school-day figure, 47 model-tagged Amazon reviews incl. the Australian mis-provisioning cluster** |
 | **imoo Watch Phone X10** | **4** | **6** | **Evidence 3→6 (deep pass 2026-08-19): 11 model-verified owners across 6 countries, contaminated pool quarantined, seeded comments proven with receipts. SOS is an opt-in screen gesture** |
-| **imoo Watch Phone Z3** | **4** | **5** | **Was 5/3, then 4/6. Capability corrected — see below; evidence 6→5 (one favourable pass); clean Amazon owner base quadrupled to ~56 tagged reviews on 2026-08-19, score held pending depth** |
+| **imoo Watch Phone Z3** | **4** | **6** | **Evidence 5→6 (2026-08-19): shares the now-passed +40 registration flow (first-hand, see Z7); ro_status unknown→likely. History: was 5/3, then 4/6, then 4/5 (capability corrected below; one favourable pass); ~56 tagged Amazon reviews** |
 | Carneo GuardKid+ Platinum | **3** | **8** | **Was 5/5. Location broken for a large minority; SOS false-fires undisableably** |
 | Carneo GuardKid+ ULTRA 2nd gen | **3** | **7** | **Was 5/4. Indoors it is a cell-tower device by design; no DoC exists; ~10% early deaths** |
 | Garett Kids 4G line | **3** | **7** | **Was 5/3. Wi-Fi→LBS→GPS by design; app 1.70★ on iOS; named in DEF CON 34** |

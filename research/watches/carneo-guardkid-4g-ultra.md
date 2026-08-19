@@ -238,6 +238,8 @@ review_pool_seeded:     yes       # NEW. Heureka.cz labels 10 of its 19 reviews 
                                   # (3.9/5 ~ 78%). It is also the only one that needs a real
                                   # browser to read. On this product, the reachable evidence is the
                                   # seeded evidence.
+price_display_eur: "€104.88"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "865.41 lei"
 price_eur:              129 RRP (carneo.eu / carneo.sk); EUR 104.88 street at smartshop.sk 2026-08-19
 buy_from:               eMAG.ro (marketplace seller "HomeMode"), Romania
 price_ro_eur:           865.41 RON, approx. EUR 170 - about 34% above Carneo's own RRP

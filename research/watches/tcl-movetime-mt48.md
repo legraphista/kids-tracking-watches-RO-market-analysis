@@ -55,6 +55,8 @@ camera:                 true          # 2 MP
 games:                  true
 extras_disableable:     partial       # School Time Mode disables camera, games and group chats on a schedule;
                                       # no evidence of a permanent off-switch for any of them
+price_display_eur: "€150"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "897.99 lei"
 price_eur:              150           # RRP, TCL press release 2025-09-10
 buy_from:               eMAG.ro (Romania) — first-party, "Vândut și livrat de eMAG", 24-month warranty, 30-day returns
 price_ro_eur:           897.99 RON (≈ €180, approximate conversion — no dated FX source)

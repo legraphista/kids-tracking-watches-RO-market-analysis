@@ -56,6 +56,8 @@ camera: true                  # 0.3 MP
 games: true                   # 7 preinstalled, no more installable
 extras_disableable: partial   # no per-app off switch for camera/games; only a scheduled "Do not disturb"
                               # that locks the whole menu
+price_display_eur: "€88.27"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "529.99 lei"
 price_eur: 88.27              # osiriss.lv (Latvia), 2026-08-19
 buy_from: eMAG.ro (marketplace seller "Prestigio Plaza"), Romania; also osiriss.lv (LV), dateks.lv (LV), digitec.ch (CH)
 price_ro_eur: 529.99 RON      # eMAG.ro, both BL and VL listings, 2026-08-19

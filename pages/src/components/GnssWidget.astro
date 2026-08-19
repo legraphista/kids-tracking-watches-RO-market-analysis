@@ -1,0 +1,86 @@
+---
+import { t } from '../lib/i18n.mjs';
+const { watch, lang } = Astro.props;
+const d = watch.data;
+const CONSTELLATIONS = ['GPS', 'GLONASS', 'BeiDou', 'Galileo', 'QZSS'];
+const pos = Array.isArray(d.positioning) ? d.positioning.map((p) => String(p).toLowerCase()) : null;
+// entries vary: 'GPS', 'GPS-L1', 'GPS-L5' — substring match, but never let 'a-gps'/'agps' count as GPS
+const has = (name) => {
+  if (!pos) return null;
+  const n = name.toLowerCase();
+  return pos.some((p) => p.replace(/a-?gps/g, '').includes(n));
+};
+const galileo = has('Galileo');
+const dualBand = pos ? pos.some((p) => p.includes('l5')) : false;
+const wifi = String(d.wifi_positioning).toLowerCase() === 'true' || d.wifi_positioning === true;
+const wifiDisputed = /disputed|unknown/i.test(String(d.wifi_positioning));
+const mapId = `map-${watch.slug}`;
+---
+<section class="widget">
+  <h3>{t('wGnssTitle', lang)}</h3>
+  <p class="chips">
+    <strong>{t('wConstellations', lang)}:</strong>
+    {CONSTELLATIONS.map((c) => {
+      const h = has(c);
+      return <span class={`chip ${h === true ? 'ok' : ''}`}>{h === true ? `✓ ${c}` : `– ${c} (${t('wNotStated', lang)})`}</span>;
+    })}
+    {dualBand && <span class="chip ok">✓ GPS L1+L5 (dual-band)</span>}
+    {pos === null && <span class="hint">{t('wPosUnknown', lang)}</span>}
+  </p>
+  <p>{galileo === true ? t('wGalileoYes', lang) : galileo === false ? t('wGalileoNotStated', lang) : t('wGalileoUnknown', lang)}</p>
+  <p class="chips maplegend">
+    <span class="ring l-lbs">●</span> {t('wRingLbs', lang)}
+    {(wifi || wifiDisputed) && <><span class="ring l-wifi">●</span> {t('wRingWifi', lang)}{wifiDisputed ? ' (?)' : ''}</>}
+    <span class="ring l-gps">●</span> {t('wRingGps', lang)}
+  </p>
+  <div class="map" id={mapId}
+    data-wifi={wifi ? '1' : wifiDisputed ? '?' : '0'}
+    data-l-gps={t('wLblGps', lang)}
+    data-l-wifi={t('wLblWifi', lang)}
+    data-l-lbs={t('wLblLbs', lang)}
+    data-l-school={t('wSchool', lang)}></div>
+  <p class="hint">{t('wMapNote', lang)}{!wifi && !wifiDisputed ? ` ${t('wNoWifi', lang)}` : ''}{wifiDisputed ? ` ${t('wWifiDisputed', lang)}` : ''}</p>
+</section>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" is:inline></script>
+<script is:inline define:vars={{ mapId }}>
+  (function () {
+    const el = document.getElementById(mapId);
+    if (!el || typeof L === 'undefined') return;
+    // a school in central Bucharest as the illustration point
+    const center = [44.4353, 26.0999];
+    const M_PER_DEG_LAT = 111320;
+    const map = L.map(el, { scrollWheelZoom: false, attributionControl: true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+    // illustrative radii, sourced from the corpus: GPS fix 5–15 m (owner reports),
+    // Wi-Fi to ~300 m and LBS to ~1 km (LAMAX vendor's own figures; owners report 2–15 km).
+    // Ring colors validated (CVD) against the light map surface: blue / orange / magenta.
+    const rings = [
+      { r: 1000, color: '#9f1853', cls: 'l-lbs', label: el.dataset.lLbs, show: true, edge: 'top-inside' },
+      { r: 300, color: '#b95b1d', cls: 'l-wifi', label: el.dataset.lWifi, show: el.dataset.wifi !== '0', edge: 'bottom-outside' },
+      { r: 15, color: '#0b62a4', cls: 'l-gps', label: el.dataset.lGps, show: true, edge: 'right' },
+    ];
+    for (const ring of rings) {
+      if (!ring.show) continue;
+      L.circle(center, { radius: ring.r, color: ring.color, weight: 2.5, fillColor: ring.color, fillOpacity: 0.08 }).addTo(map);
+      // label anchored to the ring's edge, not the shared center
+      // '-inside' anchors at the ring edge but hangs the label toward the centre,
+      // so nothing clips at the map border
+      let at = center, dir = 'right', off = [14, 0];
+      if (ring.edge === 'top-inside') { at = [center[0] + ring.r / M_PER_DEG_LAT, center[1]]; dir = 'bottom'; off = [0, 4]; }
+      // '-outside' hangs the label below the ring's bottom edge, arrow pointing up at it —
+      // keeps the crowded centre (pin + GPS label) clear
+      if (ring.edge === 'bottom-outside') { at = [center[0] - ring.r / M_PER_DEG_LAT, center[1]]; dir = 'bottom'; off = [0, 6]; }
+      L.tooltip({ permanent: true, direction: dir, offset: off, className: `ringlabel ${ring.cls}` })
+        .setContent(ring.label)
+        .setLatLng(at)
+        .addTo(map);
+    }
+    L.marker(center).addTo(map);
+    map.setView(center, 14);
+    setTimeout(() => map.invalidateSize(), 0);
+  })();
+</script>

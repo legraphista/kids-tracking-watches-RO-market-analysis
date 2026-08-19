@@ -118,6 +118,8 @@ extras_disableable:     partial       # weaker than the doc implies: games, What
                                       # the Friends bump-to-pair feature, the camera and odposlech all have
                                       # NO documented off switch, and owners report the SOS button
                                       # self-triggering in a school bag with no way to disable it.
+price_display_eur: "€155"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "565.52 lei"
 price_eur:              155           # carneo.eu EU list. Real CZ price 2,150 CZK (~EUR 85) — see Verdict
 buy_from:               eMAG.ro (marketplace seller HomeMode), Romania — 565.52 RON black/pink, in stock 2026-08-19
 price_ro_eur:           ~113          # 565.52 RON at ~5.0 RON/EUR; blue variant 707.65 RON (~EUR 142)

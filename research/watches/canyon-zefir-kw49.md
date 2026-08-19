@@ -54,6 +54,8 @@ camera:                 true     # 0.3 MP
 games:                  true     # 5 games + educational mini-apps + audio player (1 GB)
 extras_disableable:     partial  # vendor states games, gallery and audio player can be locked from the app;
                                  # no evidence the camera or the covert "stealth call" can be locked
+price_display_eur: "≈ €67–69"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "650.53 lei"
 price_eur:              ~67–69 (Slovakia); ~117 (Czechia, planeo.cz)
 buy_from:               eMAG.ro marketplace seller "OVOLT România" (NOT eMAG 1P) — or, far cheaper,
                         SK/CZ retail (Axdata.sk, Heureka.sk, ASBIS CZ eshop)

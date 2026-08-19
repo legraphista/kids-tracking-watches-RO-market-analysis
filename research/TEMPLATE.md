@@ -117,3 +117,9 @@ Note how many independent reports back each point — never generalise from one.
 ## Sources
 
 Every URL used, with date accessed and what it established.
+
+<!-- SITE FIELDS (added 2026-08-19): the site's homepage tile reads
+     price_display_eur / price_display_ron — hand-picked, normalized display strings
+     (e.g. "€186.15" / "1,114.56 lei"), chosen from the venues documented in the
+     price fields; pick the venue the research actually recommends, not the first
+     one a regex would find. Omit price_display_ron if no clean RON figure exists. -->

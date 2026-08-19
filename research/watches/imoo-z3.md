@@ -13,7 +13,13 @@ release_year: 2025               # ESTABLISHED 2026-08-19. imoo Singapore's own 
 still_sold: yes                  # imoo EU store EUR 126.65 and UK store GBP 129.00, both live 2026-08-19
 
 # --- Romania verdict (the pass/fail question) ---
-ro_status: unknown
+ro_status: likely                # UPGRADED from unknown 2026-08-19: the shared imoo account flow
+                                 # was completed first-hand with a +40 number (this research) —
+                                 # account created, no SMS challenge presented (corrected same
+                                 # day), pair-watch screen reached.
+                                 # Same app (com.imoo.watch.global), same account system as Z7.
+                                 # See "RO registration test" in the Z7 file. Z3-on-a-RO-network
+                                 # remains untested.
 ro_evidence_tier: 3              # dated first-hand RO reports exist for the imoo platform
                                  # (RO App Store, RO Play), none for the Z3 itself.
                                  # Tier 1 NOT reached: imoo names no RO carrier, lists no RO
@@ -107,6 +113,8 @@ extras_disableable: partial      # Class Mode (per-day schedules), Sleep Mode, A
                                  # call-location report ("Raportul locațiilor de apel"), per a
                                  # German owner 2026-01-29. Child can reach watch Settings and
                                  # toggle flight mode (sibling Z1 report).
+price_display_eur: "€126.65"      # normalized for the site tile; picked from the price fields below
+price_display_ron: "663.86 lei"
 price_eur: 126.65                # imoo EU store (from EUR 149.00), live 2026-08-19; GBP 129.00 UK;
                                  # MediaMarkt DE EUR 125.00 (UVP 149); Telekom DE shop lists it too
 buy_from: Amazon.de (sold by IMOO Direct, "Deliver to Romania", free delivery) is now cheaper
@@ -1414,3 +1422,14 @@ listing has **0 reviews and 0 Q&A**. **eMAG.bg does NOT list the Z3** (only imoo
 device listings plus accessories; all with 0 reviews, 0 Q&A). No BG/HU registration or SMS-code
 report of any kind was found on either venue, so the imoo signup-risk question stays open with
 zero new evidence.
+
+## RO registration — the platform gate passed (2026-08-19, first-hand)
+
+The imoo account flow (app `com.imoo.watch.global`, +40 number) was completed successfully
+first-hand on 2026-08-19 — ~~SMS code~~ no SMS challenge was presented; account creation went
+straight to the pair-watch screen (corrected same day — full detail in the Z7 file, "RO
+registration test").
+The Z3 uses the same app and the same account system, so the registration blocker documented
+in this file (one failed-SMS report, with an identical German twin suggesting an app bug) is
+superseded at platform level. `ro_status` moves unknown → **likely**. Still untested for the
+Z3 specifically: pairing, calls and positioning on a Romanian network.

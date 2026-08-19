@@ -68,6 +68,7 @@ extras_disableable:     partial                    # "Supervisión de aplicacion
                                                    # watch apps; "Modo inactivo en clase" / "No Molestar" reduces the
                                                    # watch to a clock on a schedule with SOS+GPS still live.
                                                    # Whether the CAMERA specifically can be killed: UNKNOWN.
+price_display_eur: "€129"      # normalized for the site tile; picked from the price fields below
 price_eur:              129                        # savefamilygps.com, from €149. gen 1: €105, from €115
 buy_from:               savefamilygps.com (Spain, ships to Romania via UPS); also Amazon.es, TradeInn/Kidinn
 price_ro_eur:           n/a                        # no Romanian retailer, distributor or warranty entity exists
