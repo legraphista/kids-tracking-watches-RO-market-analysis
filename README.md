@@ -21,6 +21,11 @@ Romania (no 3G network; B20 decides indoor coverage; Android companion app requi
   a newly appeared watch and integrating it into the corpus and site by this project's
   method: evidence rules, Romania gate, hand-calibrated scoring, bilingual summaries,
   and the build-time drift lint.
+- **[.claude/commands/discover-watches.md](.claude/commands/discover-watches.md)** — a
+  slash command (`/discover-watches newer than <date>`) that re-runs the original
+  five-lens market sweep incrementally: date-gated novelty detection (CE DoC / FCC /
+  press / app-v1.0 dates), vendor-death detection, OEM rebrand dedup, and the query
+  patterns that actually worked. New candidates feed into `/add-watch`.
 
 No affiliate links; no vendor relationships. Raw scraped working data stays local
 (`research/.sweeps/`, gitignored).
