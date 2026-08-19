@@ -28,7 +28,7 @@ function splitSections(md) {
 const chunks = summary ? splitSections(summary.body) : [];
 const placed = new Set(chunks.map((c) => WIDGET_AFTER[c.heading]).filter(Boolean));
 ---
-<Base lang={lang} path={`/watches/${watch.slug}/`} title={name} description={summary?.verdict_line}>
+<Base lang={lang} path={`/watches/${watch.slug}/`} title={name} description={summary?.verdict_line} image={`/og/${watch.slug}-${lang}.png`}>
   <h1>{name}</h1>
   {!watch.gated && (
     <p>
