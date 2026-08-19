@@ -11,6 +11,29 @@ to `/add-watch` one at a time. Read first: `research/OPTIONS.md` (Tier A + Tier 
 "seen but not researched" list — that list is your warm start), `research/watches/white-label-setracker-class.md`,
 and the Romania gate in `research/RANKING.md`.
 
+## Build the known-name roster first, and inject it into every lens
+
+The lens sub-agents never see OPTIONS.md — anything you don't paste into their prompts,
+they will happily "discover" again. Before launching lenses, extract from OPTIONS.md:
+
+- every **Tier A** model (18 as of 2026-08),
+- every **Tier B** row across all five kill tables — geo-blocked, region-locked, dead-radio,
+  dead-vendor, channel dead-end — WITH its killer reason (one line each),
+- the **"seen but not researched"** names (Safekid Zenit, One2track, Qlokkie, DEPLAY,
+  Kidywatch, Leotec/Kiano/Forever/Manta, Techmade/Trevi/Celly, ZTE K1 Pro, Watchu
+  Guardian, My Gator Watch, Vidimensio — the warm start: these are fair game to research,
+  not to re-discover),
+- the **white-label pseudo-brand tail** from the class doc and OPTIONS row 18 (Wingereich,
+  WIRSEN, Techone, MiniWATCH, NEOVANCE, Evolve-x, PTHTECHUS-class Amazon natives, the
+  Wonlex KT-series numbers already catalogued).
+
+Paste this roster into every lens prompt as a KNOWN LIST with three explicit rules:
+(1) a known name is reported only if something material CHANGED since the cutoff (new
+model, un-geo-blocked, vendor died/revived, radio generation bump) — never re-researched
+from scratch; (2) a Tier B killer reason is treated as settled unless the lens finds
+dated evidence that it no longer holds (e.g. Xplora adding Romania to its country list IS
+a finding); (3) budget goes to names ABSENT from the roster.
+
 ## The date gate
 
 A name counts as NEW-since-cutoff only if **at least two** of these fall after the cutoff:
