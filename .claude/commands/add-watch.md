@@ -78,6 +78,15 @@ scrutiny), "bazin" (pool), "însămânțat" (seeded → use "plantat"), "listare
 "Statut" (→ "Stare"), "fix" GPS (→ "poziționare"), "a cădea pe" (→ "a trece pe"), quote pairs
 are „…”.
 
+Then generate the watch's **social/OG cards**: every watch page references
+`pages/public/og/<slug>-ro.png` and `<slug>-en.png` (1200×630) in its `og:image` meta — a
+missing file is a silent 404, the build will NOT catch it. Match the existing cards exactly
+(open any `pages/public/og/*.png` for reference): background `#14171a`, blue brand line
+(`Ceasuri GPS · cercetare RO` / `GPS watches · RO research`), the watch name as headline, the
+language's `verdict_line` as body, and chips for Capability/Evidence scores, RO status and the
+display price. Render an HTML card in a headless browser and screenshot at 1200×630 (the
+Playwright/Chrome MCP tools do this; ask the user for browser access if you have none).
+
 ## Step 5 — propagate and verify
 
 Update COMPARISON.md's ranked table (and the decision path ONLY if the new watch changes the
