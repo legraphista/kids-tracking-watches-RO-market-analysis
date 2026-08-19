@@ -11,6 +11,18 @@ to `/add-watch` one at a time. Read first: `research/OPTIONS.md` (Tier A + Tier 
 "seen but not researched" list — that list is your warm start), `research/watches/white-label-setracker-class.md`,
 and the Romania gate in `research/RANKING.md`.
 
+## Step 0 — request browser access before launching anything
+
+Check whether the `mcp__claude-in-chrome__*` browser tools are available in your session.
+If they are not, STOP and ask the user to grant browser access (their logged-in Chrome
+profile) before starting the sweep — Reddit, Amazon, and eMAG review pagination open ONLY
+through it, and the original sweep's biggest blind spots were exactly the venues behind
+those walls. Plan for the lenses to hand walled URLs back to you (agents may not share the
+browser session) so you can fetch them through the profile. In that profile you are
+strictly READ-ONLY — never post, rate, vote, buy, subscribe, or enter credentials; stop at
+sign-in prompts and report. Captchas are never solved by you — ask the user to clear them
+in their browser, then continue.
+
 ## Build the known-name roster first, and inject it into every lens
 
 The lens sub-agents never see OPTIONS.md — anything you don't paste into their prompts,
