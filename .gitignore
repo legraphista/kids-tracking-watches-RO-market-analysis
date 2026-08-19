@@ -1,0 +1,3 @@
+# raw agent working data: scraped page dumps, yt-dlp output, vendor PDFs
+# kept locally for auditability, not published
+.sweeps/
