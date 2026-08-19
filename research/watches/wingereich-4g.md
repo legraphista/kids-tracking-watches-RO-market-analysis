@@ -2,7 +2,8 @@
 
 ```yaml
 ---
-model:                  Wingereich 4G — sold as two distinct hardware products under one brand:
+model:                  >-
+                        Wingereich 4G — sold as two distinct hardware products under one brand:
                         "D-023" (1.91" Super AMOLED, eMAG PNK DQVXVGYBM / DDVXVGYBM) and
                         "D-011" (1.4" IPS, eMAG PNK DVXCJDYBM)
 brand:                  Wingereich™ — a trademark of SWEINSTEIGER DB GROUP S.R.L. (RO),
@@ -40,7 +41,8 @@ update_interval_min:    UNKNOWN
 # --- Battery (claimed and observed are SEPARATE facts) ---
 battery_mah:            900 (D-023) / 700 (D-011)   # vendor-stated, two different products
 battery_claimed_h:      168 (D-023) / 72 "minim 3 zile" (D-011)   # vendor figures
-battery_observed_h:     4 h - 3 days, bimodal by model and profile (FULL pool read 2026-08-19):
+battery_observed_h:     >-
+                        4 h - 3 days, bimodal by model and profile (FULL pool read 2026-08-19):
                         D-011 (700 mAh IPS) skews 2-3 days on light use but 7 h with sensors
                         active / 4 h with continuous monitoring (George, tested on 2 units);
                         D-023 (900 mAh AMOLED) skews hours-to-one-day (4-5 h x2 units, "cateva

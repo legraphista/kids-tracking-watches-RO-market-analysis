@@ -1,0 +1,27 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import WatchTable from './WatchTable.astro';
+import { t } from '../lib/i18n.mjs';
+import { renderMd } from '../lib/render.mjs';
+import { loadRanking } from '../lib/watches.mjs';
+const { lang } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const decision = fs.readFileSync(path.resolve(process.cwd(), `src/content/site/decision-path.${lang}.md`), 'utf-8');
+const xplora = loadRanking().gate.find((g) => g.name.startsWith('Xplora'));
+---
+<Base lang={lang} path="/">
+  <h1>{t('siteTitle', lang)}</h1>
+  <p class="tagline">{t('tagline', lang)}</p>
+  <div class="decision">
+    <h2>{t('decisionTitle', lang)}</h2>
+    <div class="prose" set:html={renderMd(decision, { lang, base })} />
+  </div>
+  <WatchTable lang={lang} />
+  <p class="hint">
+    {lang === 'ro'
+      ? `Xplora (toate modelele) nu apare în tabel — exclus de la început: ${xplora.reason}`
+      : `Xplora (all models) is not in the table — excluded outright: ${xplora.reason}`}
+  </p>
+</Base>

@@ -1,0 +1,16 @@
+{
+  "name": "kids-watch-pages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "lint": "node scripts/lint.mjs",
+    "build": "npm run lint && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.12.0",
+    "js-yaml": "^4.1.0",
+    "marked": "^15.0.0"
+  }
+}

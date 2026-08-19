@@ -1,0 +1,33 @@
+---
+import { t } from '../lib/i18n.mjs';
+import { loadWatches } from '../lib/watches.mjs';
+const { lang } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const watches = loadWatches();
+function fmt(v) {
+  if (v === undefined || v === null) return '—';
+  return String(v).split(' # ')[0].trim();
+}
+---
+<div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th>{t('colWatch', lang)}</th>
+        <th>{t('colMah', lang)}</th>
+        <th>{t('colClaimed', lang)}</th>
+        <th>{t('colObserved', lang)}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {watches.map((w) => (
+        <tr>
+          <td><a href={`${base}${lang === 'ro' ? '/ro' : ''}/watches/${w.slug}/`}>{String(w.data.model).split('(')[0].trim()}</a></td>
+          <td>{fmt(w.data.battery_mah)}</td>
+          <td>{fmt(w.data.battery_claimed_h)}</td>
+          <td>{fmt(w.data.battery_observed_h)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

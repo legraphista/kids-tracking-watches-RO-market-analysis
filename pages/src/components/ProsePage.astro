@@ -1,0 +1,14 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import { renderMd } from '../lib/render.mjs';
+const { lang, slug, title, path: pagePath } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const md = fs.readFileSync(path.resolve(process.cwd(), `src/content/site/${slug}.${lang}.md`), 'utf-8');
+---
+<Base lang={lang} path={pagePath} title={title}>
+  <h1>{title}</h1>
+  <div class="prose" set:html={renderMd(md, { lang, base })} />
+  <slot />
+</Base>

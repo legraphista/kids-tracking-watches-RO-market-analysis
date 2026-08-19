@@ -1,0 +1,101 @@
+---
+import { t } from '../lib/i18n.mjs';
+import { loadWatches, loadSummaries } from '../lib/watches.mjs';
+const { lang } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const watches = loadWatches();
+const summaries = loadSummaries(lang);
+// Angel Watch sits in the matrix but is a do-not-buy (Android app pulled from Play)
+const DO_NOT_BUY = new Set(['angel-watch-series-r']);
+function roCell(w) {
+  if (w.gated) return { label: t('gated', lang), cls: 'bad' };
+  const s = String(w.data.ro_status || 'unknown').split(/\s/)[0];
+  const map = t('roStatus', lang);
+  const cls = s === 'verified' ? 'ok' : s === 'likely' ? 'ok' : s === 'fails' ? 'bad' : 'warn';
+  return { label: map[s] || s, cls };
+}
+function yn(v) {
+  const s = String(v).toLowerCase();
+  if (s === 'true' || s === 'yes') return { label: t('yes', lang), cls: 'ok' };
+  if (s === 'false' || s === 'no') return { label: t('no', lang), cls: 'bad' };
+  return { label: t('unknown', lang), cls: 'warn' };
+}
+function short(v, n = 34) {
+  if (v === undefined || v === null) return '—';
+  const s = String(v).split('#')[0].trim();
+  return s.length > n ? s.slice(0, n - 1) + '…' : s;
+}
+const rows = watches.map((w) => {
+  const sum = summaries[w.slug];
+  return {
+    slug: w.slug,
+    name: sum?.name || String(w.data.model).split('(')[0].trim(),
+    cap: w.gated ? null : w.capability,
+    ev: w.gated ? null : w.evidence,
+    ro: roCell(w),
+    b20: yn(w.data.band_b20),
+    volte: yn(w.data.volte),
+    batt: `${short(w.data.battery_claimed_h, 20)} / ${short(w.data.battery_observed_h, 20)}`,
+    price: `${short(w.data.price_eur, 22)} / ${short(w.data.price_ro_eur, 22)}`,
+    verdict: sum?.verdict_line || '',
+    cls: DO_NOT_BUY.has(w.slug) ? 'dnb' : w.gated ? 'gated' : '',
+    dnb: DO_NOT_BUY.has(w.slug),
+  };
+});
+---
+<h2>{t('tableTitle', lang)}</h2>
+<p class="hint">{t('sortHint', lang)}</p>
+<div class="tablewrap">
+  <table class="sortable" id="watchtable">
+    <thead>
+      <tr>
+        <th data-k="name">{t('colWatch', lang)}</th>
+        <th data-k="cap" data-num>{t('colCap', lang)}</th>
+        <th data-k="ev" data-num>{t('colEv', lang)}</th>
+        <th data-k="ro">{t('colRo', lang)}</th>
+        <th data-k="b20">{t('colB20', lang)}</th>
+        <th data-k="volte">{t('colVolte', lang)}</th>
+        <th data-k="batt">{t('colBattery', lang)}</th>
+        <th data-k="price">{t('colPrice', lang)}</th>
+        <th data-k="verdict">{t('colVerdict', lang)}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr class={r.cls}>
+          <td data-v={r.name}>
+            <a class="watchname" href={`${base}${lang === 'ro' ? '/ro' : ''}/watches/${r.slug}/`}>{r.name}</a>
+            {r.dnb && <> <span class="chip bad">{t('doNotBuy', lang)}</span></>}
+          </td>
+          <td class="score" data-v={r.cap ?? -1}>{r.cap ?? '—'}</td>
+          <td class="score" data-v={r.ev ?? -1}>{r.ev ?? '—'}</td>
+          <td data-v={r.ro.label}><span class={`chip ${r.ro.cls}`}>{r.ro.label}</span></td>
+          <td data-v={r.b20.label}><span class={`chip ${r.b20.cls}`}>{r.b20.label}</span></td>
+          <td data-v={r.volte.label}><span class={`chip ${r.volte.cls}`}>{r.volte.label}</span></td>
+          <td data-v={r.batt}>{r.batt}</td>
+          <td data-v={r.price}>{r.price}</td>
+          <td data-v={r.verdict}>{r.verdict}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<script>
+  const table = document.getElementById('watchtable');
+  const ths = table.querySelectorAll('th');
+  ths.forEach((th, idx) => {
+    th.addEventListener('click', () => {
+      const num = th.hasAttribute('data-num');
+      const dir = th.dataset.dir === 'asc' ? -1 : 1;
+      ths.forEach((o) => delete o.dataset.dir);
+      th.dataset.dir = dir === 1 ? 'asc' : 'desc';
+      const tb = table.tBodies[0];
+      [...tb.rows]
+        .sort((a, b) => {
+          const av = a.cells[idx].dataset.v, bv = b.cells[idx].dataset.v;
+          return num ? (Number(av) - Number(bv)) * dir : String(av).localeCompare(String(bv)) * dir;
+        })
+        .forEach((r) => tb.appendChild(r));
+    });
+  });
+</script>

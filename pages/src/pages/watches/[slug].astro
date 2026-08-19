@@ -1,0 +1,13 @@
+---
+import WatchPage from '../../components/WatchPage.astro';
+import { loadWatches, loadSummaries } from '../../lib/watches.mjs';
+export function getStaticPaths() {
+  const summaries = loadSummaries('en');
+  return loadWatches().map((watch) => ({
+    params: { slug: watch.slug },
+    props: { watch, summary: summaries[watch.slug] },
+  }));
+}
+const { watch, summary } = Astro.props;
+---
+<WatchPage watch={watch} summary={summary} lang="en" />

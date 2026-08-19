@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { t, href } from '../lib/i18n.mjs';
+const { lang, path, title } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const nav = [
+  { p: '/', label: t('navHome', lang) },
+  { p: '/method/', label: t('navMethod', lang) },
+  { p: '/battery/', label: t('navBattery', lang) },
+  { p: '/reviews/', label: t('navReviews', lang) },
+];
+---
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} — ` : ''}{t('siteTitle', lang)}</title>
+    <meta name="description" content={t('tagline', lang)} />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href={href(base, lang, '/')}>{lang === 'ro' ? 'Ceasuri GPS copii · RO' : 'Kids GPS watches · RO'}</a>
+        <nav>
+          {nav.map((n) => (
+            <a href={href(base, lang, n.p)} aria-current={n.p === path ? 'page' : undefined}>{n.label}</a>
+          ))}
+        </nav>
+        <span class="langswitch">
+          <a class={lang === 'en' ? 'on' : ''} href={href(base, 'en', path)}>EN</a>
+          {' · '}
+          <a class={lang === 'ro' ? 'on' : ''} href={href(base, 'ro', path)}>RO</a>
+        </span>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        {t('footer', lang)} <a href="https://github.com/legraphista/kids-tracking-watches-RO-market-analysis">GitHub</a>.
+        {t('tagline', lang)}
+      </div>
+    </footer>
+  </body>
+</html>

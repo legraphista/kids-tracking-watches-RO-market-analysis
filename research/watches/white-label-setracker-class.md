@@ -5,7 +5,8 @@ brand:                  Wonlex — trading name of Shenzhen YiQingTeng Electroni
                         # NEOVANCE, Evolve-x, Camix, MoreFIT, Tovstore, Abcros, LAGENIO, TehnoTek,
                         # TrackMe, iQuality, LikeSmart, ELYTHEN, NOVOTIM, Qyntech, Medeyatech,
                         # plus retailer house labels Xkids and KidGPS.
-release_year:           continuous production. SKUs on Romanian shelves in Aug 2026 span the
+release_year:           >-
+                        continuous production. SKUs on Romanian shelves in Aug 2026 span the
                         KT2x generation (platform page dated 2021-06-21) to KT42. Per-SKU: UNKNOWN
 still_sold:             yes — 119 Wonlex SKUs on eMAG.ro alone, plus 211 SKUs at xkids.ro
 
@@ -34,7 +35,8 @@ modem_chipset:          UNISOC SL8521E (8521E), Cat-4, dual-core Cortex-A7 @1.2 
 # --- Positioning (the #1 criterion) ---
 positioning:            [GPS, AGPS, WiFi, LBS]   # OEM platform page states GPS 22-ch, Wi-Fi, LBS only.
                                                  # GLONASS/Galileo/BeiDou NOT stated
-wifi_positioning:       true — and it is the dominant mode indoors. Accuracy claims: GPS 5–15 m,
+wifi_positioning:       >-
+                        true — and it is the dominant mode indoors. Accuracy claims: GPS 5–15 m,
                         LBS 100–1000 m (OEM figures)
 update_interval_min:    UNKNOWN — SeTracker2 exposes selectable modes; no published minimum
 
@@ -48,12 +50,14 @@ battery_observed_h:     ~1 h (worst dated RO report) to 48–60 h (best, and onl
                         with location polling active
 
 # --- App & service ---
-app_name:               SeTracker2 (com.tgelec.setracker). Some SKUs offer "Wonlex App".
+app_name:               >-
+                        SeTracker2 (com.tgelec.setracker). Some SKUs offer "Wonlex App".
                         Outliers in the same class: Abcros → Me.Watch/Alaaeng; LAGENIO → com.yyt.lagenio
 app_android_min:        UNKNOWN
 app_ro_playstore:       true
 app_last_update:        2026-07 (v3.4.1, released 2026-07-16)
-data_region:            MIXED — EU compute, Chinese operator. The published "Europe and Africa"
+data_region:            >-
+                        MIXED — EU compute, Chinese operator. The published "Europe and Africa"
                         server 52.28.132.157 resolves to AWS eu-central-1, Frankfurt, Germany.
                         Platform operator: 3G Electronics / YiQingTeng, Shenzhen, China.
                         User-uploaded photos were found on Alibaba Cloud (Aliyun) buckets (2020 research)

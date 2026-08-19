@@ -1,0 +1,43 @@
+---
+import { t } from '../lib/i18n.mjs';
+const { watch, lang } = Astro.props;
+const d = watch.data;
+const L = {
+  ro_status: { en: 'Romania status', ro: 'Status România' },
+  lte_bands: { en: 'LTE bands', ro: 'Benzi LTE' },
+  band_b20: { en: 'B20 (indoor/rural band)', ro: 'B20 (banda indoor/rural)' },
+  volte: { en: 'VoLTE', ro: 'VoLTE' },
+  voice_fallback: { en: 'Voice fallback', ro: 'Rezervă voce' },
+  positioning: { en: 'Positioning systems', ro: 'Sisteme de localizare' },
+  update_interval_min: { en: 'Auto-locate interval (min)', ro: 'Interval localizare automată (min)' },
+  battery_mah: { en: 'Battery cell (mAh)', ro: 'Acumulator (mAh)' },
+  battery_claimed_h: { en: 'Battery claimed (h)', ro: 'Baterie promisă (h)' },
+  battery_observed_h: { en: 'Battery observed (h)', ro: 'Baterie observată (h)' },
+  app_name: { en: 'Companion app', ro: 'Aplicație' },
+  app_ro_playstore: { en: 'App in RO Play Store', ro: 'Aplicație în Play Store RO' },
+  data_region: { en: 'Data region', ro: 'Regiunea datelor' },
+  sim: { en: 'SIM', ro: 'SIM' },
+  water_rating: { en: 'Water rating', ro: 'Rezistență la apă' },
+  weight_g: { en: 'Weight (g)', ro: 'Greutate (g)' },
+  price_eur: { en: 'Price (EUR)', ro: 'Preț (EUR)' },
+  price_ro_eur: { en: 'Price in Romania', ro: 'Preț în România' },
+};
+function fmt(v) {
+  if (v === undefined || v === null) return '—';
+  if (Array.isArray(v)) return v.join(', ');
+  return String(v).split(' # ')[0].trim();
+}
+const rows = Object.keys(L).filter((k) => d[k] !== undefined).map((k) => [L[k][lang], fmt(d[k])]);
+---
+<div class="speccard">
+  <h2>{t('specTitle', lang)}</h2>
+  <div class="tablewrap">
+    <table>
+      <tbody>
+        {rows.map(([k, v]) => (
+          <tr><th>{k}</th><td>{v}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
