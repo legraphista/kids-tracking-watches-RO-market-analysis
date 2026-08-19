@@ -1,5 +1,8 @@
 # 4G kids' GPS watches — Romania market analysis
 
+**Site: <https://legraphista.github.io/kids-tracking-watches-RO-market-analysis/>**
+(Romanian, with English behind the flag switcher)
+
 Research corpus for choosing a 4G GPS tracker watch for a 7-year-old at school in
 Romania (no 3G network; B20 decides indoor coverage; Android companion app required).
 
