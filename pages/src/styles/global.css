@@ -157,3 +157,7 @@ tr.trapband td { color: var(--muted); }
   border: 1px solid var(--line); background: var(--soft); color: var(--fg);
   border-radius: 1em; padding: .05rem .55rem; cursor: pointer; font-size: .9rem; line-height: 1.4;
 }
+.ghlink { color: var(--muted); display: inline-flex; align-items: center; }
+.ghlink:hover { color: var(--fg); }
+.issuelink { color: var(--muted); text-decoration: none; font-size: .85rem; }
+.issuelink:hover { color: var(--fg); text-decoration: underline; }

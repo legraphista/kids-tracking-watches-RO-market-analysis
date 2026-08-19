@@ -61,6 +61,8 @@ const S = {
   colObserved: { en: 'Observed', ro: 'Observat' },
   langName: { en: 'English', ro: 'Română' },
   themeToggle: { en: 'Light / dark mode', ro: 'Mod luminos / întunecat' },
+  ghRepo: { en: 'Research corpus and site source on GitHub', ro: 'Corpusul de cercetare și sursa site-ului pe GitHub' },
+  reportIssue: { en: 'Report an issue', ro: 'Raportează o problemă' },
   tilePriceNote: { en: 'price at research date, 2026-08-19', ro: 'preț la data cercetării, 2026-08-19' },
   tileWorksWith: { en: 'Network fit', ro: 'Potrivire pe rețele' },
   tileIndoor: { en: 'Stays connected indoors', ro: 'Rămâne conectat în interior' },
